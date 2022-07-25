@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{count}}</h1>
+    <!--  v-on可以简写为@  -->
+    <button @click="add">直接累加</button>
+    <br>
+    <!-- v-on事件函数 调不调用都可以 加括号只是为了方便传参,不加括号就是不用传参 -->
+    <button @click="decrement($event)">每次累减</button>
+    <br>
+    <button @click="addN(2,$event)">每次累加2</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        /* 如果使用当前函数的时候,没有加括号,则当前事件函数的第一个参数就是event对象 */
+        add(e) {
+          console.log(e, "add中的e");
+          this.count++;
+        },
+        /* 如果使用当前函数的时候,加括号了,则需要在参数中传递固定字符 $event 在事件函数中使用形参接受,这个值就是event事件对象 */
+        decrement(e) {
+          console.log(e, "decrement中的e");
+          this.count--;
+        },
+        addN(n, e) {
+          console.log(e, "addN中的e");
+          this.count += n;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

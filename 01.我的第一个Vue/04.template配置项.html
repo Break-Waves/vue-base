@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <h1>{{msg}}</h1> -->
+  </div>
+  <script>
+    const vm = new Vue({
+      data: {
+        msg: "hello Vue",
+
+      },
+      /* 
+        模板书写的位置有两个
+          1. 直接书写在容器中(Vue会把容器的html作为模板,生成虚拟DOM),Vue挂载前,模板会暂时作为普通的html展示在浏览器中
+          2. 可以在配置项中书写template配置,值是一个字符串格式,书写html模板,在挂载之前,并不会展示在浏览器中
+      */
+      template: `
+        <h1>{{msg}}</h1>
+      `
+    })
+
+    setTimeout(() => {
+      vm.$mount("#app")
+    }, 2000)
+  </script>
+</body>
+
+</html>

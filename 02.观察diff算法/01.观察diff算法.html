@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 初始的时候在这个位置书写的模板,也是会被Vue转成虚拟DOM 然后再渲染到浏览器中的 -->
+    <h1>{{msg}}</h1>
+    <p>学习Vue好啊~</p>
+  </div>
+  <script>
+    /* 
+      在控制台可以获取到vm,通过vm.msg可以修改data中的值
+      观察控制台中元素的边,只有使用了msg的节点发生了变化,其他节点没有任何改变
+      说明在改变data的时候(diff算法介入),根据模板生成了一个新的虚拟DOM,和旧的虚拟DOM进行比较,只更新改变的元素
+    */
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: "hello Vue"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

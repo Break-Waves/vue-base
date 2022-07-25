@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 
+      插值语法:是在模板中(非属性节点)插入data中的数据,并且可能对数据进行一些计算
+
+      插值语法中只能书写表达式,不能书写语句(和react的插值语法一致)
+
+      插值语法中,如果数据的值是null或者undefined,则直接转为空串,如果是其他类型,则直接转为字符串格式
+
+     -->
+    <h1>{{msg}}</h1>
+    <p>{{count}}</p>
+    <p>{{count+1}}</p>
+    <p>{{users}}</p>
+    <p>{{score}}</p>
+    <p>{{isHot?"热":"冷"}}</p>
+    <p>{{sy}}</p>
+    <p>{{null}}</p>
+    <p>{{undefined}}</p>
+
+    <!-- react的列表渲染在vue中不适用,Vue用v-for指令 -->
+    <!-- <p>{{
+      users.map(item=>{
+        return <span>{{item}}</span>
+      })
+      }}</p> -->
+
+
+    <!-- react的条件渲染(if)在vue中不适用,Vue用v-if或者v-show指令 -->
+    <!--  if(isHot){
+      return "热"
+    }else{
+      return "冷"
+    } -->
+  </div>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: "hello Vue",
+          count: 1,
+          users: ["laowang", "lucy", "lily"],
+          score: {
+            ch: 100,
+            math: 30
+          },
+          isHot: false,
+          sy: Symbol()
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

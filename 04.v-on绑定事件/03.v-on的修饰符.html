@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{count}}</h1>
+
+    <!-- prevent修饰符可以阻止默认事件,常见于form表单的submit事件 -->
+    <button @contextmenu.prevent="">右键</button>
+
+    <br>
+
+    <!-- .stop修饰符 阻止传播 -->
+    <div @click="fn1">
+      outer1
+      <div @click.stop="fn2">inner1</div>
+    </div>
+
+    <br>
+
+    <!-- .capture修饰符 把事件传播方式改为捕获 -->
+    <div @click.capture="fn1">
+      outer2
+      <div @click="fn2">inner2</div>
+    </div>
+
+    <br>
+
+    <!-- .self修饰符:当事件要被触发的时候e.target是否是自身,如果是在触发事件 -->
+    <div @click.self="fn1">
+      outer3
+      <div @click="fn2">inner3</div>
+    </div>
+
+    <br>
+
+    <!-- .once修饰符:一次性事件 -->
+    <button @click.once="fn1">触发fn1</button>
+
+    <br>
+
+    <input type="text" @keyup.13="fn1"> <br>
+    <input type="text" @keyup.enter="fn2">
+    <input type="text" @keyup.space="fn1">
+    <input type="text" @keydown.tab="fn2">
+    <input type="text" @keydown.esc="fn1">
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        fn1() {
+          console.log("fn1111");
+        },
+        fn2() {
+          console.log("fn2222");
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

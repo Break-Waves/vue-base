@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div style="width:100px;height:100px;background:red"></div>
+    <!-- 
+      1.v-bind绑定style属性,值是一个由样式组成的对象,从data中获取
+     -->
+    <div :style="divStyle"></div>
+    <!-- 
+      2.v-bind绑定style属性,值是一个由样式对象组成的数组
+      -->
+    <div :style="divStyleArr"></div>
+    <!-- 
+      3.v-bind绑定style属性和普通的style属性可以共存,我们也可以把style对象属性值作为数据保存在data里
+     -->
+    <div style="width: 100px;height: 100px;" :style="{background:bgColor}"></div>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          //某个元素的样式
+          divStyle: {
+            width: "100px",
+            height: "100px",
+            background: "yellow"
+          },
+          divStyleArr: [{
+            width: "200px",
+          }, {
+            height: "100px"
+          }, {
+            background: "pink"
+          }],
+          bgColor: "blue"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

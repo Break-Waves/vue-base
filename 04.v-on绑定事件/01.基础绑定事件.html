@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>计数器{{count}}</h1>
+    <!-- 
+      vue中绑定事件:在模板上直接书写 v-on:XXX=""
+        - 我们可以直接在""中书写一段js代码(不要使用原生js中提供的属性或方法,因为会去实例上找,我们可以直接操作实例上的数据,或者直接调用实例上的方法)
+
+     -->
+    <button v-on:click="count = count + 1">累加</button>
+
+    <button v-on:click="add">累加</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          count: 0,
+          /* //函数一般都不会卸载data中 1.data中是书写数据的  2.data中的方法this指向window的,我们一般来说方法都是要用到数据,而数据都在vm实例上
+          add() {
+            console.log(this);
+            console.log(vm.count); //也可以这么用,但是不推荐
+          } */
+        }
+      },
+      methods: {
+        add() {
+          console.log(this, "this");
+          console.log(this.count);
+          this.count++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

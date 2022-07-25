@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+  <script src='../vue.js'></script>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- 
+      v-bind:vue中提供的用于绑定属性的命令，强制绑定数据(数据单向绑定 data ----》attr)
+
+      比方你的class属性，style属性，value属性，href属性等等，只要是属性，就可以用v-bind指令进行绑定
+
+      v-bind:attr="xxx":给attr属性强制绑定xxx数据
+
+      v-bind可以简写为一个 :(冒号)
+
+     -->
+    <h1 study="js">{{msg+1}}</h1>
+    <h1 v-bind:study.prop="study">{{msg+2}}</h1>
+    <h1 v-bind:count="count+1">{{msg+3}}</h1>
+    <h1 :isHot="isHot?'re':'leng'">{{msg+3}}</h1>
+    <img v-bind:src="src" alt="">
+    <img v-bind:src="'http://www.baidu.com/' + src" alt="">
+    <input type="text" :value="msg">
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          msg: "Hello Vue",
+          study: "vue",
+          count: 3,
+          src: "01.jpg",
+          isHot: true
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
