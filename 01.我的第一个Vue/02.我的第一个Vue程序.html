@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 插值语法中使用数据,会去Vue实例(组件实例)上去查询当前的数据的值 -->
+    <h1>{{ msg }}</h1>
+  </div>
+  <script>
+    /* 设置为 false 以阻止 vue 在启动时生成生产提示 */
+    Vue.config.productionTip = false;
+
+    //实例化Vue
+    const vm = new Vue({
+      //el代表的是容器,值是一个选择器或者是一个元素,一般使用id(因为id是唯一的)
+      el: "#app",
+      //data目前暂时先写成一个对象,用来存放数据(MVVM中的Model层)
+      data: {
+        msg: "Hello Vue!!!",
+        isHot: true
+      }
+    })
+
+    console.log(vm, "vm");
+
+    /* 
+      在vue挂载之后,可以通过vm.$el获取到模板容器(真实dom)
+    */
+    console.log(vm.$el, "vm.$el");
+  </script>
+</body>
+
+</html>
